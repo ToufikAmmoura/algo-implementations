@@ -46,10 +46,9 @@ void bubblesort(int* arr, int size){
 int main(){
     int arr[] = {4,6,2,8,9,86,12,34,1,0};
     int arraySize = sizeof(arr)/sizeof(arr[0]);
+
     bubblesort(arr, arraySize);
-    int i=0;
-    while(i < arraySize){
-        cout << arr[i++] << " ";
-    }
+    printArr(arr, arraySize);
+
     return 0;
 }
