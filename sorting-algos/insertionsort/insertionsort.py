@@ -8,10 +8,11 @@ def insert(arr, index):
     el = arr.pop(index)
     i = 0
     while i < index:
-        if el < arr[i]:
+        if el <= arr[i]:
             arr.insert(i, el)
-            break
+            return
         i+=1
+    arr.insert(index, el)
 
 def insertionsort(arr):
     i = 1
