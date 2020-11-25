@@ -34,11 +34,27 @@ void swap(int i, int j, int* arr){
 }
 
 void quicksort(int* arr, int begin, int end){
-    int pivot = arr[end];
-    while(begin < end){
-        
-    }
+    // wat we nodig hebben is de quicksort variant die met swap werkt en niet met insert
+    while(true){
+        int pivot = arr[begin + (end-begin)/2];
+        while(arr[begin] < pivot){
+            begin++;
+        }
 
+        while(arr[end] > pivot){
+            end--;
+        }
+
+        if(begin <= end){
+            swap(begin, end, arr);
+        }
+        begin++;
+        end--;
+
+        if(begin == end){
+            break;
+        }
+    }
 }
 
 int main(){
