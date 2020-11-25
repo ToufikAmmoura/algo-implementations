@@ -27,8 +27,17 @@ void insert(int* arr, int index, int el, int size){
     }
 }
 
-void quicksort(int* arr, int begin, int end){
+void swap(int i, int j, int* arr){
+    int TEMP = arr[i];
+    arr[i] = arr[j];
+    arr[j] = TEMP;
+}
 
+void quicksort(int* arr, int begin, int end){
+    int pivot = arr[end];
+    while(begin < end){
+        
+    }
 
 }
 
@@ -36,7 +45,7 @@ int main(){
     int arr[] = {4,6,2,8,9,86,12,34,1,0};
     int arraySize = sizeof(arr)/sizeof(arr[0]);
 
-    quicksort();
+    // quicksort();
     printArr(arr, arraySize);
     return 0;
 }
