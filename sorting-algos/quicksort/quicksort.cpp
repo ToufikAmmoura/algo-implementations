@@ -2,29 +2,13 @@
 #include <vector>
 using namespace std;
 
-void printArr(int arr[], int size){
+void printArr(int* arr, int size){
     int i=0;
     while(i < size){
         cout << arr[i++] << " ";
+        cout << "prr";
     }
     cout << "\n";
-}
-
-void insert(int* arr, int index, int el, int size){
-    // we hebben denk ik een insert functie nodig (ookal kost dit performance)
-    int newArr[size+1];
-    int i=0;
-    while(i < index){
-        arr[i] = newArr[i]; // copying one array into the other
-        i++;
-    }
-    
-    newArr[i] = el; // i will be equal to index so we insert the element
-    
-    while(i < size){
-        newArr[i+1] = arr[i]; // newArr is now one element bigger so i+1 
-        i++;
-    }
 }
 
 void swap(int i, int j, int* arr){
@@ -35,33 +19,41 @@ void swap(int i, int j, int* arr){
 
 void quicksort(int* arr, int begin, int end){
     // wat we nodig hebben is de quicksort variant die met swap werkt en niet met insert
+    int left = begin;
+    int right = end;
+    
     while(true){
-        int pivot = arr[begin + (end-begin)/2];
-        while(arr[begin] < pivot){
-            begin++;
+        int pivot = arr[left + (right-end)/2]; // kies dit misschien random
+        while(arr[left] < pivot){
+            left++;
         }
 
-        while(arr[end] > pivot){
-            end--;
+        while(arr[right] > pivot){
+            right--;
         }
 
-        if(begin <= end){
-            swap(begin, end, arr);
-        }
-        begin++;
-        end--;
+        swap(left++, right--, arr);
 
-        if(begin == end){
+        if(left >= right){
             break;
         }
+    }
+
+    if(left == right){
+        quicksort(arr, begin, left-1);
+        quicksort(arr, right, end);
+    } else{
+        quicksort(arr, begin, right);
+        quicksort(arr, left, end);
     }
 }
 
 int main(){
     int arr[] = {4,6,2,8,9,86,12,34,1,0};
     int arraySize = sizeof(arr)/sizeof(arr[0]);
-
-    // quicksort();
+    cout << "begin";
+    quicksort(arr, 0, arraySize-1);
+    cout << "end";
     printArr(arr, arraySize);
     return 0;
 }
