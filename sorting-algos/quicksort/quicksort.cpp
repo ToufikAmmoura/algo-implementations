@@ -32,11 +32,12 @@ void quicksort(int* arr, int begin, int end){
             right--;
         }
 
-        swap(left++, right--, arr);
-
         if(left >= right){
             break;
+        } else{
+            swap(left++, right--, arr);
         }
+
     }
 
     if(left == right){
