@@ -14,7 +14,7 @@
 
 # ALGORITME:
 # Neem de kortste route die er is, als je een node voor de eerste keer ontdekt dan zal dat de kortste route zijn om daar te komen
-# x verplaats je nu van X naar A omdat die bepaald is, er zal geen snellere route zijn naar die node  
+# x verplaats je nu van X naar A omdat die bepaald is, er zal geen snellere route zijn naar die node 
 
 A = set()
 X = set()
