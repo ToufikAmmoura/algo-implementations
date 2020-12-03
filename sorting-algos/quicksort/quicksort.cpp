@@ -17,6 +17,11 @@ void swap(int i, int j, int* arr){
     arr[j] = TEMP;
 }
 
+int partition(){
+    
+}
+
+
 void quicksort(int* arr, int begin, int end){
     // wat we nodig hebben is de quicksort variant die met swap werkt en niet met insert
     int left = begin;
