@@ -13,13 +13,11 @@
 # alle andere knopen krijgen een distance van infinite
 
 # ALGORITME:
+# Neem de kortste route die er is, als je een node voor de eerste keer ontdekt dan zal dat de kortste route zijn om daar te komen
+# x verplaats je nu van X naar A omdat die bepaald is, er zal geen snellere route zijn naar die node  
 
-# Betere manier vinden om de grafiek op te slaan want hier heb je zowat niks aan
-graph = { "a" : ["b","c"],
-          "b" : ["a", "d"],
-          "c" : ["a", "d"],
-          "d" : ["e"],
-          "e" : ["d"]
-         }
+A = set()
+X = set()
 
-
+def init(begin):
+    A.add(begin)
