@@ -22,6 +22,7 @@ from math import inf
 # Neem de kortste route die er is, als je een node voor de eerste keer ontdekt dan zal dat de kortste route zijn om daar te komen
 # x verplaats je nu van X naar A omdat die bepaald is, er zal geen snellere route zijn naar die node 
 
+# dit hoort een plaats te zijn waar we de routes van s -> node kunnnen opslaan
 routes = {}
 
 graph = {}
@@ -39,10 +40,34 @@ adjacencyMatrix = [[0,4,4,6,6,0,0,0,2],
 A = set()
 X = set()
 
+# zet alle weight naar oneindig en die van de start-node naar 0
 def init(start, graphSize):
     for i in range(graphSize):
         graph[i] = (inf, "")
+        if i == start:
+            graph[i] = (0, str(start))
     A.add(start)
 
+# bezoek de buren van de node en update hun paths
+def relax(node, matrix):
+    startWeight = graph[node][0]
+    for neighbor, weight in enumerate(matrix[node]):
+        currentPath = graph[neighbor]
+        foundPath = startWeight+weight
+        if foundPath < currentPath:
+            graph[neighbor] = foundPath
+
+# geeft de node in graph terug die de korste route heeft
+def closestNode():
+    shortestPath = inf
+    node = None
+    for el in graph:
+        path = el[0]
+        if path < shortestPath:
+            shortestPath = path
+            node = el
+    return node
+
 def dijkstra(start, destination, matrix):
-    raise NotImplementedError()
+    while A != set():
+        node = closestNode()
